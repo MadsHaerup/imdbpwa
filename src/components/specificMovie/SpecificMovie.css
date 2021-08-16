@@ -1,0 +1,30 @@
+.specificMovie {
+  display: grid;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+}
+.specificMovie__details{
+  display: flex;
+}
+.specificMovie__details >p{
+margin-right: 0.5rem;
+}
+.specificMovie__title{
+  margin-bottom: 0;
+}
+.specificMovie__overview{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:1rem;
+}
+.specificMovie__image{
+  max-width: 100%;
+  height:300px;
+  border-radius: 5px;
+  width: 100%;
+  height:100%;
+}
+.specificMovie__info{
+  width:100%;
+}

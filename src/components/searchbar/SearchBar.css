@@ -1,0 +1,23 @@
+.search{
+    display: grid;
+    position: sticky;
+    top: 0;
+    padding: 0.5rem;
+    width:100%;
+    margin:0 auto;
+    background: rgb(29, 31, 37);
+}
+
+.search__bar{
+  border: none;
+  border-bottom: 1px solid grey;
+  background: transparent;
+  color: rgb(230, 230, 230);
+}
+
+#button{
+  border: none;
+  background: hsl(220, 12%, 95%);
+  box-shadow: 0 2px 6px hsl(0deg 0% 0% / 20%);
+}
+
