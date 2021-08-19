@@ -1,9 +1,19 @@
 import Index from "./views/Index";
 import { Router } from "@reach/router";
 import SpecificMovie from "./components/specificMovie/SpecificMovie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Loading from "./components/loading/Loading";
 
 function App() {
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 1000);
+	}, []);
+
 	useEffect(() => {
 		Notification.requestPermission(function (status) {
 			console.log("Permission status: ", status);
@@ -19,11 +29,16 @@ function App() {
 
 	return (
 		<div className="App">
-			<button onClick={() => displayNotification()}>Notify</button>
-			<Router>
-				<Index path="/" />
-				<SpecificMovie path="/:id" />
-			</Router>
+			{/* <button onClick={() => displayNotification()}>Notify</button> */}
+
+			{loading ? (
+				<Loading />
+			) : (
+				<Router>
+					<Index path="/" />
+					<SpecificMovie path="/:id" />
+				</Router>
+			)}
 		</div>
 	);
 }

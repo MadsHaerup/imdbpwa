@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../movie/Logo";
 import "./SpecificMovie.css";
+import PouchDB from "pouchdb";
+import { Rating } from "react-simple-star-rating";
+
+var db = new PouchDB("movieDB");
 require("dotenv").config();
+
 export default function SpecificMovie({ id }) {
 	var apiKey = process.env.REACT_APP_APIKEY;
 	const [movie, setMovie] = useState([]);
+	const [starValue, setStarValue] = useState(0);
 
 	useEffect(() => {
 		fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?i=${id}&r=json`, {
@@ -26,8 +32,18 @@ export default function SpecificMovie({ id }) {
 			});
 	}, []);
 
+	db.get(id, function (err, doc) {
+		if (err) {
+			return null;
+		} else {
+			setStarValue(doc.value);
+		}
+	});
 	return (
 		<>
+			<button className="goback" onClick={() => window.history.back()}>
+				<i class="fas fa-chevron-left"></i>{" "}
+			</button>
 			<Logo />
 			<div className="specificMovie">
 				<h1 className="specificMovie__title">{movie.Title}</h1>
@@ -42,6 +58,7 @@ export default function SpecificMovie({ id }) {
 						<p>{movie.Country}</p>
 						<p>{movie.Production}</p>
 						<p>Rating: {movie.imdbRating}</p>
+						<Rating ratingValue={starValue} /* Rating Props */ />
 						<p>{movie.Language}</p>
 						<p>{movie.Actors}</p>
 						<p>Box office {movie.BoxOffice}</p>
