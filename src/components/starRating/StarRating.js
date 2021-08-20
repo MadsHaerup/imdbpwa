@@ -14,7 +14,7 @@ export default function StarRating({ id }) {
 	};
 
 	function HandleMovie(rate) {
-		db.post({
+		db.put({
 			movieId: id,
 			value: rate,
 			_id: id,

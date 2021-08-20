@@ -25,7 +25,7 @@ export default function MovieDB({ search, setSearch }) {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, [setSearch, search]);
+	}, [setSearch, search, apiKey]);
 
 	return (
 		<div className="movies">

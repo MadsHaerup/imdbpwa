@@ -25,7 +25,6 @@ export default function SingleMovie({ title, id, year, image }) {
 				<p className="movie__title">{title} </p>
 				<p className="movie__year">{year} </p>
 				<StarRating id={id} />
-				<p>my rating: {starValue} </p>
 			</div>
 		</div>
 	);

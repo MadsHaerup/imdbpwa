@@ -30,7 +30,7 @@ export default function SpecificMovie({ id }) {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, []);
+	}, [id, apiKey]);
 
 	db.get(id, function (err, doc) {
 		if (err) {
@@ -42,7 +42,7 @@ export default function SpecificMovie({ id }) {
 	return (
 		<>
 			<button className="goback" onClick={() => window.history.back()}>
-				<i class="fas fa-chevron-left"></i>{" "}
+				<i className="fas fa-chevron-left"></i>{" "}
 			</button>
 			<Logo />
 			<div className="specificMovie">
@@ -57,7 +57,7 @@ export default function SpecificMovie({ id }) {
 					<div className="specificMovie__info">
 						<p>{movie.Country}</p>
 						<p>{movie.Production}</p>
-						<p>Rating: {movie.imdbRating}</p>
+						<p>Imdb Rating: {movie.imdbRating}</p>
 						<Rating ratingValue={starValue} /* Rating Props */ />
 						<p>{movie.Language}</p>
 						<p>{movie.Actors}</p>
